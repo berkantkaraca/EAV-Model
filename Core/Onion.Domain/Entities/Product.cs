@@ -9,5 +9,8 @@ namespace Onion.Domain.Entities
         // Relational Properties
         public virtual Category Category { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        
+        // EAV Model - Dynamic Attributes
+        public virtual ICollection<ProductAttributeValue> ProductAttributeValues { get; set; }
     }
 }

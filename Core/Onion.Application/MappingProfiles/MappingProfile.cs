@@ -5,6 +5,8 @@ using Onion.Application.Mediator.Commands.CategoryCommands;
 using Onion.Application.Mediator.Commands.OrderCommands;
 using Onion.Application.Mediator.Commands.OrderDetailCommands;
 using Onion.Application.Mediator.Commands.ProductCommands;
+using Onion.Application.Mediator.Commands.ProductAttributeCommands;
+using Onion.Application.Mediator.Commands.ProductAttributeValueCommands;
 using Onion.Application.Mediator.Results.AppUserProfileResults.CommandResults;
 using Onion.Application.Mediator.Results.AppUserProfileResults.QueryResults;
 using Onion.Application.Mediator.Results.AppUserResults.CommandResults;
@@ -17,6 +19,10 @@ using Onion.Application.Mediator.Results.OrderResults.CommandResults;
 using Onion.Application.Mediator.Results.OrderResults.QueryResults;
 using Onion.Application.Mediator.Results.ProductResults.CommandResults;
 using Onion.Application.Mediator.Results.ProductResults.QueryResults;
+using Onion.Application.Mediator.Results.ProductAttributeResults.CommandResults;
+using Onion.Application.Mediator.Results.ProductAttributeResults.QueryResults;
+using Onion.Application.Mediator.Results.ProductAttributeValueResults.CommandResults;
+using Onion.Application.Mediator.Results.ProductAttributeValueResults.QueryResults;
 using Onion.Domain.Entities;
 
 namespace Onion.Application.MappingProfiles
@@ -66,6 +72,30 @@ namespace Onion.Application.MappingProfiles
             CreateMap<Product, GetProductCommandResult>();
             CreateMap<Product, GetProductQueryResult>();
             CreateMap<Product, GetProductByIdQueryResult>();
+
+            //ProductAttribute
+            CreateMap<CreateProductAttributeCommand, ProductAttribute>();
+            CreateMap<UpdateProductAttributeCommand, ProductAttribute>();
+            CreateMap<ProductAttribute, GetProductAttributeCommandResult>();
+            CreateMap<ProductAttribute, GetProductAttributeByIdCommandResult>();
+            CreateMap<ProductAttribute, GetProductAttributeQueryResult>();
+            CreateMap<ProductAttribute, GetProductAttributeByIdQueryResult>();
+
+            //ProductAttributeValue
+            CreateMap<CreateProductAttributeValueCommand, ProductAttributeValue>();
+            CreateMap<UpdateProductAttributeValueCommand, ProductAttributeValue>();
+            CreateMap<ProductAttributeValue, GetProductAttributeValueCommandResult>()
+                .ForMember(dest => dest.AttributeName, opt => opt.MapFrom(src => src.ProductAttribute.AttributeName))
+                .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.ProductName));
+            CreateMap<ProductAttributeValue, GetProductAttributeValueByIdCommandResult>()
+                .ForMember(dest => dest.AttributeName, opt => opt.MapFrom(src => src.ProductAttribute.AttributeName))
+                .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.ProductName));
+            CreateMap<ProductAttributeValue, GetProductAttributeValueQueryResult>()
+                .ForMember(dest => dest.AttributeName, opt => opt.MapFrom(src => src.ProductAttribute.AttributeName))
+                .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.ProductName));
+            CreateMap<ProductAttributeValue, GetProductAttributeValueByIdQueryResult>()
+                .ForMember(dest => dest.AttributeName, opt => opt.MapFrom(src => src.ProductAttribute.AttributeName))
+                .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.ProductName));
         }
     }
 }
