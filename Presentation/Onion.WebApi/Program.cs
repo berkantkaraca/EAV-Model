@@ -1,7 +1,5 @@
 using Onion.Application.DependencyResolvers;
 using Onion.Persistence.DependencyResolvers;
-using Onion.InnerInfrastructure.DependencyResolvers;
-using Onion.WebApi.DependencyResolvers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,9 +14,6 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddDbContextServices();
 builder.Services.AddRepositoryServices();
-builder.Services.AddManagerServices();
-builder.Services.AddDtoMapperService();
-builder.Services.AddVmMapperService();
 builder.Services.AddHandlerService();
 
 var app = builder.Build();

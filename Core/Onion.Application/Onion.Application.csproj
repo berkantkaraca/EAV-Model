@@ -14,5 +14,14 @@
   <ItemGroup>
     <ProjectReference Include="..\Onion.Contract\Onion.Contract.csproj" />
   </ItemGroup>
+	
+  <ItemGroup>
+    <Folder Include="Mediator\Commands\ProductAttributeCommands\" />
+    <Folder Include="Mediator\Commands\ProductAttributeValueCommands\" />
+    <Folder Include="Mediator\Queries\ProductAttributeQueries\" />
+    <Folder Include="Mediator\Queries\ProductAttributeValueQueries\" />
+    <Folder Include="Mediator\Results\ProductAttributeResults\" />
+    <Folder Include="Mediator\Results\ProductAttributeValueResults\" />
+  </ItemGroup>
 
 </Project>
