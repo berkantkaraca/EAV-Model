@@ -1,5 +1,3 @@
-using Onion.Domain.Entities;
-using Onion.Contract.RepositoryInterfaces;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Onion.Application.Mediator.Results.AppUserResults.QueryResults;
